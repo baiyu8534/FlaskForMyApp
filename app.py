@@ -25,12 +25,12 @@ app.config.from_object(Config)
 mongo = PyMongo(app)
 
 
-@app.route('/')
+@app.route('/appapi/')
 def hello_world():
     return 'Hello World!'
 
 
-@app.route('/image', methods=['GET'])
+@app.route('/appapi/image', methods=['GET'])
 def get_image_page_json_data():
     page_num = int(request.args.get('page_num'))
     page_size = int(request.args.get('page_size'))
