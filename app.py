@@ -34,9 +34,9 @@ def hello_world():
 def get_image_page_json_data():
     page_num = int(request.args.get('page_num'))
     page_size = int(request.args.get('page_size'))
-    json_data_str = app_api.get_one_page_image(mongo.db.XSNS_image,
+    json_data_str = app_api.get_one_page_image(mongo.db.T2CY_image,
                                                query_filter=({}, {'_id': 0}),
-                                               page_num=page_num,
+                                               page_num=page_num-1,
                                                page_size=page_size)
 
     # all_data = mongo.db.XSNS_image.find({}, {'_id': 0})
@@ -48,6 +48,29 @@ def get_image_page_json_data():
     # json_data_str = json.dumps(json_data, ensure_ascii=False)
     return json_data_str
 
+@app.route('/appapi/ting55_search', methods=['GET'])
+def ting55_search():
+    name = request.args.get('name')
+    page = int(request.args.get('page'))
+    json_data_str = app_api.ting55_search(name,page)
+
+    return json_data_str
+
+@app.route('/appapi/get_p_list', methods=['GET'])
+def get_p_list():
+    p_id = request.args.get('p_id')
+    p_url = "https://ting55.com/book/"+p_id
+    json_data_str = app_api.get_p_list(p_url)
+    return json_data_str
+
+
+@app.route('/appapi/get_mp3_url', methods=['GET'])
+def get_mp3_url():
+    m_id = request.args.get('m_id')
+    url = "https://ting55.com/book/"+m_id
+    json_data_str = app_api.get_mp3_url(url)
+    return json_data_str
+    #return m_id + "|||||||||||"+url
 
 if __name__ == '__main__':
     app.run()

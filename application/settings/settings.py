@@ -2,11 +2,11 @@
 class Config(object):
     """项目配置核心类"""
     # 调试模式
-    DEBUG = False
+    DEBUG = True
 
     # 配置日志
-    # LOG_LEVEL = "DEBUG"
-    LOG_LEVEL = "INFO"
+    LOG_LEVEL = "DEBUG"
+    # LOG_LEVEL = "INFO"
 
     # json 中文不乱吗
     JSON_AS_ASCII = False
@@ -19,8 +19,8 @@ class Config(object):
     REDIS_POLL = 10
 
     # mongodb 远程连接
-    MONGO_URI = 'mongodb://root:bmgdb5271052710@106.52.221.177:27017/XSNS?authSource=test'
-    MONGO_DBNAME = 'XSNS'
+    MONGO_URI = 'mongodb://root:bmgdb5271052710@106.52.221.177:27017/T2CY?authSource=test'
+    MONGO_DBNAME = 'T2CY'
 
     # 数据库连接格式
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:bmsq5271052710@localhost:3306/test?charset=utf8"
